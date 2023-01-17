@@ -17,6 +17,7 @@ const response = await fetch(
 				posts(first: $size, orderBy: createdAt_DESC) {
 					id
 					createdAt
+					slug
 					content {
 					html
 					}
