@@ -24,7 +24,8 @@ const query = `query MyQuery($cursor: String!, $size: Int!) {
 
 
 
-const More = ({currentCursor, size=1}) => {
+const More = ({currentCursor, size=1, ENDPOINT=import.meta.env.ASTRO_HYGRAPH_ENDPOINT}) => {
+  console.log({ENDPOINT})
     const [posts, setPosts] = useState([])
     const [cursor, setCursor] = useState(currentCursor)
     const [hasNext, setHasNext] = useState(true)
@@ -32,7 +33,7 @@ const More = ({currentCursor, size=1}) => {
     const getMore = async () => {
         setLoading(true)
         const response = await fetch(
-            "https://api-us-east-1-shared-usea1-02.hygraph.com/v2/clcrreocx0oot01ur229906i3/master",
+          ENDPOINT,
             {
               method: "POST",
               headers: {
